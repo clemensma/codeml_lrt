@@ -45,3 +45,4 @@ p_value = likelihood_ratio_test(lnL_H0, lnL_H1, df_H0, df_H1)
 The directory for results should be structured such that each directory's name corresponds to the name of the codeml output file without the `_out.paml` extension. Within each directory, the `codeml.ctl` file and the `{directory_name}_out.paml` file are expected to be present.
 
 For instance, if your codeml output file is named `model1_out.paml`, there should be a directory named `model1` containing `codeml.ctl` and `model1_out.paml`.
+test

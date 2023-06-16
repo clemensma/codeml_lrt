@@ -6,7 +6,7 @@ setup(
     description='Perform likelihood ratio tests (LRT) on codeml output files for model selection.',
     author='Clemens Mauksch',
     author_email='clemens.mauksch@stud.uni-goettingen.de',
-    url='https://github.com/yourusername/codeml_lrt',
+    url='https://gitlab.gwdg.de/clemens.mauksch/codeml_lrt',
     packages=find_packages(),
     install_requires=[
         'biopython'

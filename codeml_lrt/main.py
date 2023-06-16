@@ -1,7 +1,7 @@
 import argparse
 import os
 from Bio.Phylo.PAML import codeml
-from LRT import likelihood_ratio_test
+from .LRT import likelihood_ratio_test
 
 # Mapping the number of site classes to their degrees of freedom
 DF_PER_NSITES = {0: 1, 1: 2, 2: 4, 7: 2, 8: 4}
@@ -45,8 +45,8 @@ def parse_arguments():
         args: A namespace containing the arguments provided.
     """
     parser = argparse.ArgumentParser(description='Perform a likelihood ratio test')
-    parser.add_argument('-0', '--H0_dir', type=str, help='Directory containing H0 model results')
-    parser.add_argument('-1', '--H1_dir', type=str, help='Directory containing H1 model results')
+    parser.add_argument('-0', '--H0_dir', type=str, help='Directory containing H0 model results', required=True)
+    parser.add_argument('-1', '--H1_dir', type=str, help='Directory containing H1 model results', required=True)
     return parser.parse_args()
 
 def LRT_for_codeml(H0_dir, H1_dir):
@@ -71,13 +71,16 @@ def LRT_for_codeml(H0_dir, H1_dir):
     
     return p_value
 
-def main(args):
+def main():
     """
     Main function to execute the LRT test and print the results.
 
     Args:
         args: A namespace containing the directories for H0 and H1 models.
     """
+
+    args = parse_arguments()
+
     # Read null model data
     model_H0, df_H0, lnL_H0 = read_control_file(args.H0_dir)
 
@@ -108,7 +111,6 @@ def main(args):
 if __name__ == '__main__':
     """
     Entry point of the script.
-    Parses the arguments and calls the main function.
+    Calls the main function.
     """
-    args = parse_arguments()
-    main(args)
+    main()

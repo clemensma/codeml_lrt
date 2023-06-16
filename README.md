@@ -25,7 +25,7 @@ Once installed, the package provides a command-line script `codeml-lrt` which yo
 codeml-lrt --H0_dir /path/to/H0_dir --H1_dir /path/to/H1_dir
 ```
 
-Both arguments `--H0_dir` and `--H1_dir` are optional, and if not provided, they will default to `/default/path/to/H0_dir` and `/default/path/to/H1_dir`, respectively. Replace these with the actual paths where your results for the null model and the alternative model are stored.
+Both arguments `--H0_dir` and `--H1_dir` are required. Fill these with the actual paths where your results for the null model and the alternative model are stored.
 
 You can also use the package in Python scripts:
 

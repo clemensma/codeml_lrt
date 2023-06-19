@@ -32,9 +32,12 @@ def read_control_file(directory):
     model = NSITES_TO_MODELS[cml.get_option('NSsites')[0]]
 
     # Read the output file and get the log-likelihood
-    results = codeml.read(directory + '/' + os.path.basename(directory) + '_out.paml')
-    lnL = results['NSsites'][list(results['NSsites'].keys())[0]]['lnL']
-
+    #raise(Exception(directory + os.path.basename(directory) + '_out.paml'))
+    results = codeml.read(directory + os.path.basename(directory[:-1]) + '_out.paml')
+    try:
+        lnL = results['NSsites'][list(results['NSsites'].keys())[0]]['lnL']
+    except Exception:
+        raise(Exception("Error reading codeml output file at " + directory + os.path.basename(directory[:-1]) + "_out.paml"))
     return model, df, lnL
 
 def parse_arguments():
